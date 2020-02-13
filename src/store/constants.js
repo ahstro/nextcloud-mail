@@ -22,3 +22,5 @@
 export const UNIFIED_ACCOUNT_ID = 0
 export const UNIFIED_INBOX_ID = btoa('inbox')
 export const UNIFIED_INBOX_UID = UNIFIED_ACCOUNT_ID + '-' + UNIFIED_INBOX_ID
+export const PRIORITY_INBOX_ID = btoa('priority')
+export const PRIORITY_INBOX_UID = UNIFIED_ACCOUNT_ID + '-' + PRIORITY_INBOX_ID
