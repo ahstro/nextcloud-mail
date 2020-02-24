@@ -10,14 +10,30 @@
 				:infinite-scroll-distance="10"
 				@shortkey.native="onShortcut"
 			>
-				<Mailbox v-if="!folder.isPriorityInbox" :account="account" :folder="folder" :search-query="searchQuery" :bus="bus" />
+				<Mailbox
+					v-if="!folder.isPriorityInbox"
+					:account="account"
+					:folder="folder"
+					:search-query="searchQuery"
+					:bus="bus"
+				/>
 				<template v-else>
 					<!--<SectionTitle class="app-content-list-item" :name="t('mail', 'Priority')" />-->
 					<!--<Mailbox :account="unifiedAccount" :folder="unifiedInbox" :search-query="searchQuery + ' is:starred'" :bus="bus" />-->
 					<SectionTitle class="app-content-list-item" :name="t('mail', 'Starred')" />
-					<Mailbox :account="unifiedAccount" :folder="unifiedInbox" :search-query="appendToSearch('is:starred')" :bus="bus" />
+					<Mailbox
+						:account="unifiedAccount"
+						:folder="unifiedInbox"
+						:search-query="appendToSearch('is:starred')"
+						:bus="bus"
+					/>
 					<SectionTitle class="app-content-list-item" :name="t('mail', 'Other')" />
-					<Mailbox :account="unifiedAccount" :folder="unifiedInbox" :search-query="appendToSearch('not:starred')" :bus="bus" />
+					<Mailbox
+						:account="unifiedAccount"
+						:folder="unifiedInbox"
+						:search-query="appendToSearch('not:starred')"
+						:bus="bus"
+					/>
 				</template>
 			</AppContentList>
 			<NewMessageDetail v-if="newMessage" />
@@ -41,7 +57,7 @@ import Message from './Message'
 import NewMessageDetail from './NewMessageDetail'
 import NoMessageSelected from './NoMessageSelected'
 import {normalizeEnvelopeListId} from '../store/normalization'
-import {UNIFIED_ACCOUNT_ID, UNIFIED_INBOX_ID} from "../store/constants";
+import {UNIFIED_ACCOUNT_ID, UNIFIED_INBOX_ID} from '../store/constants'
 
 export default {
 	name: 'MailboxMessage',

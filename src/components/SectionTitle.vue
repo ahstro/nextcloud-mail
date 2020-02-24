@@ -21,19 +21,18 @@
 
 <template>
 	<div id="priority">
-		<div class="app-content-list-item"> {{ name }}</div>
-
+		<div class="app-content-list-item">{{ name }}</div>
 	</div>
 </template>
 <script>
 export default {
 	name: 'SectionTitle',
-props: {
-	name: {
-		type: String,
-		required: true,
+	props: {
+		name: {
+			type: String,
+			required: true,
+		},
 	},
-	}
 }
 </script>
 

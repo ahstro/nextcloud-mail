@@ -22,7 +22,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import {UNIFIED_ACCOUNT_ID, UNIFIED_INBOX_ID, UNIFIED_INBOX_UID, PRIORITY_INBOX_ID, PRIORITY_INBOX_UID} from './constants'
+import {
+	UNIFIED_ACCOUNT_ID,
+	UNIFIED_INBOX_ID,
+	UNIFIED_INBOX_UID,
+	PRIORITY_INBOX_ID,
+	PRIORITY_INBOX_UID,
+} from './constants'
 import actions from './actions'
 import {getters} from './getters'
 import mutations from './mutations'
