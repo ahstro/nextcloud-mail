@@ -12,12 +12,12 @@
 			>
 				<Mailbox v-if="!folder.isPriorityInbox" :account="account" :folder="folder" :search-query="searchQuery" :bus="bus" />
 				<template v-else>
-					<SectionTitle class="app-content-list-item" :name="t('mail', 'Priority')" />
-					<!--<Mailbox :account="unifiedAccount" :folder="unifiedInbox" :search-query="searchQuery" :bus="bus" />-->
+					<!--<SectionTitle class="app-content-list-item" :name="t('mail', 'Priority')" />-->
+					<!--<Mailbox :account="unifiedAccount" :folder="unifiedInbox" :search-query="searchQuery + ' is:starred'" :bus="bus" />-->
 					<SectionTitle class="app-content-list-item" :name="t('mail', 'Starred')" />
-					<!--<Mailbox :account="unifiedAccount" :folder="unifiedInbox" :search-query="searchQuery" :bus="bus" />-->
+					<Mailbox :account="unifiedAccount" :folder="unifiedInbox" :search-query="appendToSearch('is:starred')" :bus="bus" />
 					<SectionTitle class="app-content-list-item" :name="t('mail', 'Other')" />
-					<!--<Mailbox :account="unifiedAccount" :folder="unifiedInbox" :search-query="searchQuery" :bus="bus" />-->
+					<Mailbox :account="unifiedAccount" :folder="unifiedInbox" :search-query="appendToSearch('not:starred')" :bus="bus" />
 				</template>
 			</AppContentList>
 			<NewMessageDetail v-if="newMessage" />
@@ -140,6 +140,12 @@ export default {
 		},
 		onShortcut(e) {
 			this.bus.$emit('shortcut', e)
+		},
+		appendToSearch(str) {
+			if (this.searchQuery === undefined) {
+				return str
+			}
+			return this.searchQuery + ' ' + str
 		},
 		searchProxy(query) {
 			if (this.alive) {

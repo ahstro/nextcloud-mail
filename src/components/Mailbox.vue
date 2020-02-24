@@ -162,8 +162,8 @@ export default {
 					this.$router.replace({
 						name: 'message',
 						params: {
-							accountId: this.account.id,
-							folderId: this.folder.id,
+							accountId: this.$route.params.accountId,
+							folderId: this.$route.params.folderId,
 							messageUid: first.uid,
 						},
 					})
@@ -202,8 +202,8 @@ export default {
 
 			try {
 				await this.$store.dispatch('fetchNextEnvelopePage', {
-					accountId: this.$route.params.accountId,
-					folderId: this.$route.params.folderId,
+					accountId: this.account.accountId,
+					folderId: this.folder.id,
 					envelopes: this.envelopes,
 					query: this.searchQuery,
 				})
@@ -299,8 +299,8 @@ export default {
 
 			try {
 				await this.$store.dispatch('syncEnvelopes', {
-					accountId: this.$route.params.accountId,
-					folderId: this.$route.params.folderId,
+					accountId: this.account.accountId,
+					folderId: this.folder.id,
 					query: this.searchQuery,
 				})
 			} catch (error) {
