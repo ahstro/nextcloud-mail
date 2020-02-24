@@ -36,4 +36,13 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+	#priority {
+		font-weight: bold;
+		display: inline-block;
+	}
+	.app-content-list-item:hover {
+		background-color: transparent;
+		opacity: 0.8;
+	}
+</style>
