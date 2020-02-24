@@ -10,7 +10,15 @@
 				:infinite-scroll-distance="10"
 				@shortkey.native="onShortcut"
 			>
-				<Mailbox :account="account" :folder="folder" :search-query="searchQuery" :bus="bus" />
+				<Mailbox v-if="!folder.isPriorityInbox" :account="account" :folder="folder" :search-query="searchQuery" :bus="bus" />
+				<template v-else>
+					<SectionTitle class="app-content-list-item" :name="t('mail', 'Priority')" />
+					<!--<Mailbox :account="unifiedAccount" :folder="unifiedInbox" :search-query="searchQuery" :bus="bus" />-->
+					<SectionTitle class="app-content-list-item" :name="t('mail', 'Starred')" />
+					<!--<Mailbox :account="unifiedAccount" :folder="unifiedInbox" :search-query="searchQuery" :bus="bus" />-->
+					<SectionTitle class="app-content-list-item" :name="t('mail', 'Other')" />
+					<!--<Mailbox :account="unifiedAccount" :folder="unifiedInbox" :search-query="searchQuery" :bus="bus" />-->
+				</template>
 			</AppContentList>
 			<NewMessageDetail v-if="newMessage" />
 			<Message v-else-if="showMessage" @delete="deleteMessage" />
@@ -24,6 +32,7 @@ import AppContent from '@nextcloud/vue/dist/Components/AppContent'
 import AppContentList from '@nextcloud/vue/dist/Components/AppContentList'
 import infiniteScroll from 'vue-infinite-scroll'
 import isMobile from '@nextcloud/vue/dist/Mixins/isMobile'
+import SectionTitle from './SectionTitle'
 import Vue from 'vue'
 
 import AppDetailsToggle from './AppDetailsToggle'
@@ -32,6 +41,7 @@ import Message from './Message'
 import NewMessageDetail from './NewMessageDetail'
 import NoMessageSelected from './NoMessageSelected'
 import {normalizeEnvelopeListId} from '../store/normalization'
+import {UNIFIED_ACCOUNT_ID, UNIFIED_INBOX_ID} from "../store/constants";
 
 export default {
 	name: 'MailboxMessage',
@@ -46,6 +56,7 @@ export default {
 		Message,
 		NewMessageDetail,
 		NoMessageSelected,
+		SectionTitle,
 	},
 	mixins: [isMobile],
 	props: {
@@ -74,6 +85,12 @@ export default {
 		}
 	},
 	computed: {
+		unifiedAccount() {
+			return this.$store.getters.getAccount(UNIFIED_ACCOUNT_ID)
+		},
+		unifiedInbox() {
+			return this.$store.getters.getFolder(UNIFIED_ACCOUNT_ID, UNIFIED_INBOX_ID)
+		},
 		hasMessages() {
 			// it actually should be `return this.$store.getters.getEnvelopes(this.account.id, this.folder.id).length > 0`
 			// but for some reason Vue doesn't track the dependencies on reactive data then and messages in subfolders can't

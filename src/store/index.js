@@ -53,8 +53,7 @@ export default new Vuex.Store({
 				specialRole: 'inbox',
 				unread: 0,
 				folders: [],
-				envelopes: [],
-				searchEnvelopes: [],
+				envelopeLists: {},
 			},
 			[PRIORITY_INBOX_UID]: {
 				id: PRIORITY_INBOX_ID,
