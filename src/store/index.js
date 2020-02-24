@@ -42,6 +42,7 @@ export default new Vuex.Store({
 		accounts: {
 			[UNIFIED_ACCOUNT_ID]: {
 				id: UNIFIED_ACCOUNT_ID,
+				accountId: UNIFIED_ACCOUNT_ID,
 				isUnified: true,
 				folders: [UNIFIED_INBOX_UID, PRIORITY_INBOX_UID],
 				collapsed: false,
