@@ -103,7 +103,7 @@ export default {
 			return list.length > 0
 		},
 		showMessage() {
-			return this.hasMessages && this.$route.name === 'message'
+			return (this.folder.isPriorityInbox === true || this.hasMessages) && this.$route.name === 'message'
 		},
 		newMessage() {
 			return (
