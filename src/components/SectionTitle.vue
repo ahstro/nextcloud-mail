@@ -38,7 +38,6 @@ export default {
 
 <style scoped>
 #priority {
-	font-weight: bold;
 	display: inline-block;
 }
 .app-content-list-item:hover {
