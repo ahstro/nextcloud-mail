@@ -21,7 +21,7 @@
 
 <template>
 	<div id="priority">
-		<div class="app-content-list-item">{{ name }}</div>
+		<div class="app-content-list-item"><h2>{{ name }}</h2></div>
 	</div>
 </template>
 <script>
