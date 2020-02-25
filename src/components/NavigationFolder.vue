@@ -42,7 +42,7 @@
 
 				<!-- TODO: make *mark as read* available for all folders once there is more than one action -->
 				<ActionButton
-					v-if="!account.isUnified && folder.specialRole !== 'flagged'"
+					v-if="folder.specialRole !== 'flagged'"
 					icon="icon-checkmark"
 					:title="t('mail', 'Mark all as read')"
 					:disabled="loadingMarkAsRead"
