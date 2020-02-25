@@ -186,8 +186,4 @@ export default {
 </script>
 
 <style scoped>
-.namestarred,
-.nameother {
-	background-color: var(--color-background-hover);
-}
 </style>
