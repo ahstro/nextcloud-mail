@@ -218,7 +218,7 @@ export default {
 
 			this.$store
 				.dispatch('markFolderRead', {
-					account: this.account,
+					accountId: this.account.id,
 					folderId: this.folder.id,
 				})
 				.then(() => logger.info(`folder ${this.folder.id} marked as read`))
