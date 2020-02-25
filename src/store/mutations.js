@@ -30,7 +30,7 @@ import {sortMailboxes} from '../imap/MailboxSorter'
 import {UNIFIED_ACCOUNT_ID} from './constants'
 
 const addFolderToState = (state, account) => folder => {
-	const id = account.id + '-' + folder.id
+	const id = normalizedFolderId(account.id, folder.id)
 	folder.accountId = account.id
 	folder.envelopeLists = {}
 	Vue.set(state.folders, id, folder)
