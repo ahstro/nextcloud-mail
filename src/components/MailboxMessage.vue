@@ -21,14 +21,16 @@
 					<!--<SectionTitle class="app-content-list-item" :name="t('mail', 'Priority')" />-->
 					<!--<Mailbox :account="unifiedAccount" :folder="unifiedInbox" :search-query="searchQuery + ' is:starred'" :bus="bus" />-->
 					<SectionTitle class="app-content-list-item starred" :name="t('mail', 'Starred')" />
-					<Mailbox class="namestarred"
+					<Mailbox
+						class="namestarred"
 						:account="unifiedAccount"
 						:folder="unifiedInbox"
 						:search-query="appendToSearch('is:starred')"
 						:bus="bus"
 					/>
 					<SectionTitle class="app-content-list-item other" :name="t('mail', 'Other')" />
-					<Mailbox class="nameother"
+					<Mailbox
+						class="nameother"
 						:account="unifiedAccount"
 						:folder="unifiedInbox"
 						:search-query="appendToSearch('not:starred')"
